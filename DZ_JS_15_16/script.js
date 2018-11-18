@@ -66,7 +66,7 @@ function showPrompt(text, callback) {
         form.style.width = "200px";
         form.style.border = "1px solid black";
         form.style.textAlign = "center";
-        
+
         form.appendChild(divText);
 
         let inpText = document.createElement("input");
@@ -120,15 +120,15 @@ function showPrompt(text, callback) {
 
     lastElem.onkeydown = function (e) {
         if (e.keyCode == 9 && !e.shiftKey) {
-           firstElem.focus();
-           return false;
+            firstElem.focus();
+            return false;
         }
     };
 
     firstElem.onkeydown = function (e) {
         if (e.keyCode == 9 && e.shiftKey) {
-           lastElem.focus();
-           return false;
+            lastElem.focus();
+            return false;
         }
     };
 }

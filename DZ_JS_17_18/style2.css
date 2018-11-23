@@ -1,0 +1,27 @@
+body {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+#clock {
+    position: relative;
+    width: 700px;
+    height: 700px;
+    margin: 20px auto;
+}
+
+#hour, #min, #sec {
+    display: block;
+	position: absolute;
+    left: 200px;
+    top: 0;
+}
+
+#min {
+    z-index: 1;
+}
+
+#hour {
+    z-index: 2;
+}

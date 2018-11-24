@@ -12,7 +12,7 @@ function showClock() {
     contextHTML.strokeStyle = "#000000";
     contextHTML.lineWidth = 1;
     contextHTML.beginPath();
-    contextHTML.arc(xCenterClock, yCenterClock, radiusClock, 0, 2 * Math.PI); //
+    contextHTML.arc(xCenterClock, yCenterClock, radiusClock, 0, 2 * Math.PI);
     contextHTML.moveTo(xCenterClock, yCenterClock);
     contextHTML.stroke();
     contextHTML.closePath();
@@ -109,7 +109,7 @@ function showTime() {
     contextHTML.strokeStyle = "#000000";
     contextHTML.fillStyle = "#ffffff";
     contextHTML.lineWidth = 3;
-    contextHTML.arc(xCenterClock, yCenterClock, 5, 0, 2 * Math.PI); //
+    contextHTML.arc(xCenterClock, yCenterClock, 5, 0, 2 * Math.PI);
     contextHTML.stroke();
     contextHTML.fill();
     contextHTML.closePath();

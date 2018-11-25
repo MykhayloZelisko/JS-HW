@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 50px;
+}
+
+h1 {
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+}
+
+h3 {
+    display: none;
+    color: darkred;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#inputText {
+    height: 40px;
+    width: 100%;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.hr {
+    height: 5px;
+    background-color: black;
+    margin: 15px 0;
+}
+
+.divInput {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+}
+
+#add {
+    height: 44px;
+    width: 44px;
+    border: none;
+    background-color: white;
+}
+
+#add i {
+    font-size: 40px;
+}
+
+.items {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    cursor: move;
+}
+
+.del {
+    font-size: 30px;
+    cursor: default;
+}
+
+.items p {
+    margin: 2px 0 0 5px;
+}
+
+.checkbox {
+    margin-top: 9px;
+}
+
+label {
+    display: flex;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.dragOpacity {
+    opacity: 0.5;
+}
+
+.items.over {
+    border: 1px solid #aaa;
+}
+
+
+
+

@@ -2,8 +2,9 @@ let inputText = document.getElementById("inputText");
 let addText = document.getElementById("add");
 let container = document.querySelector("#container");
 let list = container.children;
+let dragSrcEl = null;
 
-let cols = new Array;
+document.body.children[1].setAttribute("hidden", "true");
 
 function validAdd() {
     if ((inputText.value === "") || (list.length === 10)) {
@@ -16,26 +17,23 @@ function validAdd() {
 function validInputText() {
     if (list.length === 10) {
         inputText.setAttribute("disabled", "disabled");
-        document.body.children[1].style.display = "block";
+        document.body.children[1].removeAttribute("hidden");
     } else {
         inputText.removeAttribute("disabled");
-        document.body.children[1].style.display = "none";
+        document.body.children[1].setAttribute("hidden", "true");
     }
 }
 
-function addItem() {
+function createItem() {
     let item = document.createElement("div");
     item.className = "items";
-    item.setAttribute("draggable", "true");
+    item.draggable = "true";
     
     let check = document.createElement("input");
     check.className = "checkbox";
     check.setAttribute("type", "checkbox");
     
     let p = document.createElement("p");
-    p.innerHTML = inputText.value;
-    inputText.value = "";
-    addText.setAttribute("disabled", "disabled");
     
     let iconDel = document.createElement("i");
     iconDel.className = "del material-icons";
@@ -47,11 +45,22 @@ function addItem() {
     
     item.appendChild(label);
     item.appendChild(iconDel);
+
+    return item;
+}
+
+function addItem() {
+    let item = createItem();
+    let p = item.children[0].children[1];
+    
+    p.innerHTML = inputText.value;
+    inputText.value = "";
+    addText.setAttribute("disabled", "disabled");
+    
     container.appendChild(item);
     
-    cols.push(item);
-    
     validInputText();
+    initEvents(item);
 }
 
 function delItem() {
@@ -64,7 +73,6 @@ function delItem() {
     
     if (k >= 0) {
         container.removeChild(container.children[k]);
-        cols.splice(k, 1);
     }
     
     validInputText();
@@ -90,13 +98,10 @@ container.addEventListener("click", disabledChek);
 
 // - - - - - - - - - - - - - - - - drag and drop - - - - - - - - - - - - - - -
 
-let dragSrcEl = null;
-
 function handleDragStart(e) {
-    this.classList.add("dragOpacity");
-//    dragSrcEl = this;
-//    e.dataTransfer.effectAllowed = "move";
-//    e.dataTransfer.setData("text/html", this.innerHTML);
+    dragSrcEl = this;
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/html", this.innerHTML);
 }
 
 function handleDragOver(e) {
@@ -108,42 +113,37 @@ function handleDragOver(e) {
 }
 
 function handleDragEnter(e) {
-    this.classList.add("over");
+
 }
 
 function handleDragLeave(e) {
-    this.classList.remove("over");
+
 }
 
-//function handleDrop(e) {
-//    if(e.preventDefault) {
-//        e.preventDefault();
-//    }
-//    
-//    if (dragSrcEl !== this) {
-//        dragSrcEl.innerHTML = this.innerHTML;
-//        this.innerHTML = e.dataTransfer.getData("text/html");
-//    }
-//    
-//    return false;
-//}
+function handleDrop(e) {
+    if(e.preventDefault) {
+        e.preventDefault();
+    }
+    
+    if ((dragSrcEl !== this) && (dragSrcEl !== null)) {
+        let newItem = createItem();
+        newItem.innerHTML = e.dataTransfer.getData("text/html");
+        container.insertBefore(newItem, this);
+        container.removeChild(dragSrcEl);
+    }
+    
+    return false;
+}
 
 function handleDragEnd(e) {
-    cols.forEach(function(col) {
-        col.classList.remove("over");
-        col.classList.remove("dragOpacity");
-    });
+
 }
 
-function initEvents() {
-    cols.forEach(function(col) {
-        col.addEventListener("dragstart", handleDragStart, true); 
-        col.addEventListener("dragenter", handleDragEnter, false);
-        col.addEventListener("dragover", handleDragOver, false);
-        col.addEventListener("dragleave", handleDragLeave, false);
-//        col.addEventListener("drop", handleDrop, false);
-        col.addEventListener("dragend", handleDragEnd, false);
-    });
+function initEvents(e) {
+        e.addEventListener("dragstart", handleDragStart, true); 
+        e.addEventListener("dragenter", handleDragEnter, false);
+        e.addEventListener("dragover", handleDragOver, false);
+        e.addEventListener("dragleave", handleDragLeave, false);
+        e.addEventListener("drop", handleDrop, false);
+        e.addEventListener("dragend", handleDragEnd, false);
 }
-
-initEvents();

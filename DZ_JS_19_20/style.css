@@ -78,15 +78,3 @@ img {
     display: block;
     margin: 0 auto;
 }
-
-.dragOpacity {
-    opacity: 0.5;
-}
-
-.items.over {
-    border: 1px solid #aaa;
-}
-
-
-
-

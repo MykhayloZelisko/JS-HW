@@ -1,0 +1,86 @@
+/* Завдання 1 */
+
+* {
+    margin: 0 auto;
+}
+
+body {
+    margin: 10px auto;
+    width: 500px;
+}
+
+.message {
+    background: #eeffee;
+    padding: 10px 20px 10px;
+    border-top: solid 2px #ccdd99;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    display: block;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: red;
+}
+
+/* Завдання 2 */
+
+.carusel {
+    margin: 50px auto; 
+    position: relative;
+    width: 400px;
+    padding: 10px 40px;
+    border: 1px solid darkgray;
+    border-radius: 15px;
+    background: gray;
+}
+
+.carusel img {
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+
+.arrow {
+    position: absolute;
+    top: 50px;
+    padding: 0;
+    background: #ddd;
+    border: 1px solid #eee;
+    font-size: 24px;
+    line-height: 24px;
+    color: #444;
+    display: block;
+}
+
+.prev {
+    left: 7px;
+}
+
+.next {
+    right: 7px;
+}
+
+.gallery {
+    width: 400px;
+    overflow: hidden;
+}
+
+.gallery ul {
+    height: 100px;
+    width: 2100px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+}
+
+.gallery li {
+    display: inline-block;
+}

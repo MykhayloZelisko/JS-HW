@@ -1,0 +1,53 @@
+.carusel {
+    margin: 50px auto; 
+    position: relative;
+    width: 400px;
+    padding: 10px 40px;
+    border: 1px solid darkgray;
+    border-radius: 15px;
+    background: gray;
+}
+
+.carusel img {
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+
+.arrow {
+    position: absolute;
+    top: 50px;
+    padding: 0;
+    background: #ddd;
+    border: 1px solid #eee;
+    font-size: 24px;
+    line-height: 24px;
+    color: #444;
+    display: block;
+}
+
+.prev {
+    left: 7px;
+}
+
+.next {
+    right: 7px;
+}
+
+.gallery {
+    width: 400px;
+    overflow: hidden;
+}
+
+.gallery ul {
+    height: 100px;
+    width: 2100px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+}
+
+.gallery li {
+    display: inline-block;
+}
